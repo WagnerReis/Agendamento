@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
-const appointmentService = require("./services/AppointmentService");
+const AppointmentService = require("./services/AppointmentService");
 
 app.use(express.static("public"));
 app.use(express.urlencoded({extended: false}));
@@ -24,7 +24,7 @@ app.get("/cadastro", (req, res) => {
 });
 
 app.post("/create", async (req, res) => {
-  var status = await appointmentService.Create(
+  var status = await AppointmentService.Create(
     req.body.name,
     req.body.email,
     req.body.description,
@@ -41,8 +41,8 @@ app.post("/create", async (req, res) => {
 });
 
 app.get("/getcalendar", async (req, res) => {
-  var consultas = await appointmentService.GetAll(false);
-  res.json(consultas);
+  var appointments = await AppointmentService.GetAll(false);
+  res.json(appointments);
 });
 
 app.listen(8080, () => {});

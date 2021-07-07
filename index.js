@@ -45,4 +45,4 @@ app.get("/getcalendar", async (req, res) => {
   res.json(appointments);
 });
 
-app.listen(8080, () => {});
+app.listen(8080, () => {}); 
